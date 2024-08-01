@@ -1,1 +1,3 @@
-<p>recipes works!</p>
+@for (recipe of recipes$ | async; track recipe.id) {
+<app-recipe [recipe]="recipe"></app-recipe>
+}
