@@ -1,0 +1,6 @@
+<p
+  [ngClass]="{ ingredient: true, selected: ingredient().selected }"
+  (click)="onSelect()"
+>
+  {{ ingredient().name }},
+</p>

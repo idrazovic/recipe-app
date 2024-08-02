@@ -1,0 +1,7 @@
+.ingredient {
+  cursor: pointer;
+
+  &.selected {
+    color: blue;
+  }
+}

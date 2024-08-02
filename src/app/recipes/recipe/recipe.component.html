@@ -1,3 +1,10 @@
-<p>Name: {{ recipe().name }}</p>
-<p>Description: {{ recipe().description }}</p>
-<p>Ingredients: {{ recipe().ingredientIds }}</p>
+<div class="recipe">
+  <p>
+    <b>{{ recipe().name }}:</b>
+  </p>
+  <div class="ingredients">
+    @for(ingredient of recipe().ingredients; track ingredient.id) { &nbsp;
+    <app-ingredient [ingredient]="ingredient" />
+    }
+  </div>
+</div>

@@ -1,14 +1,13 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+
 import { RecipesComponent } from "./recipes/recipes.component";
+import { IngredientsComponent } from "./ingredients/ingredients.component";
 
 @Component({
-  selector: 'app-root',
-  standalone: true,
-  imports: [RouterOutlet, RecipesComponent],
-  templateUrl: './app.component.html',
-  styleUrl: './app.component.scss'
+    selector: 'app-root',
+    standalone: true,
+    imports: [RecipesComponent, IngredientsComponent],
+    templateUrl: './app.component.html',
+    styleUrl: './app.component.scss'
 })
-export class AppComponent {
-  title = 'recipe-app';
-}
+export class AppComponent { }
