@@ -1,0 +1,11 @@
+@import "../../util.scss";
+
+.ingredients {
+  &__content {
+    text-align: center;
+
+    &__loader {
+      @include loader;
+    }
+  }
+}

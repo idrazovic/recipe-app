@@ -5,6 +5,7 @@ import { Store } from '@ngrx/store';
 
 import { Ingredient } from './ingredient.model';
 import { selectIngredient } from '../../store/ingredients/ingredients.actions';
+import { IngredientsState } from '../../store/ingredients/ingredients.reducers';
 
 @Component({
     selector: 'app-ingredient',
@@ -15,10 +16,13 @@ import { selectIngredient } from '../../store/ingredients/ingredients.actions';
 })
 export class IngredientComponent {
     ingredient = input.required<Ingredient>();
+    isClickable = input.required<boolean>();
 
-    constructor(private store: Store<{ ingredients: Ingredient[] }>) { }
+    constructor(private store: Store<{ ingredients: IngredientsState }>) { }
 
     onSelect() {
-        this.store.dispatch(selectIngredient({ payload: this.ingredient().id }));
+        if (!this.isClickable()) return;
+
+        this.store.dispatch(selectIngredient({ payload: this.ingredient() }));
     }
 }

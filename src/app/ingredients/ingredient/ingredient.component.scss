@@ -1,7 +1,9 @@
+@import "../../../util.scss";
+
 .ingredient {
   cursor: pointer;
 
-  &.selected {
-    color: blue;
+  &--selected {
+    color: $highlight-color;;
   }
 }

@@ -1,6 +1,13 @@
-<div class="recipes">
-  <h2>Recipes</h2>
-  @for (recipe of recipes(); track recipe.id) {
-  <app-recipe [recipe]="recipe"></app-recipe>
-  }
+<div class="recipes p1">
+    <h2 class="text-center">Recipes</h2>
+    <hr>
+    <div class="recipes__content">
+        @if(contentLoaded()) {
+            @for (recipe of recipes(); track recipe.id) {
+                <app-recipe [recipe]="recipe"></app-recipe>
+            } 
+        } @else {
+            <span class="recipes__content__loader"></span>
+        }
+    </div>
 </div>

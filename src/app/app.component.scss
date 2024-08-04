@@ -1,7 +1,31 @@
-.wrapper {
+@import "../../src/util.scss";
+
+.app {
   display: flex;
-  flex-direction: row;
-  justify-content: space-evenly;
   flex-wrap: wrap;
+  flex-direction: column;
   height: 100vh;
+
+  &__recipes {
+    background-color: $background-color-2;
+  }
+
+  &__ingredients {
+    background-color: $background-color;
+  }
+
+  &__cart {
+    background-color: $background-color-3;
+  }
+
+  & > * {
+    @include column-layout;
+    width: 100%;
+  }
+
+  @media (min-width: 768px) {
+    & > * {
+      width: calc(100% / 3);
+    }
+  }
 }

@@ -1,6 +1,18 @@
-<div class="ingredients">
-  <h2>Ingredients</h2>
-  @for(ingredient of ingredients$ | async; track ingredient.id) {
-  <app-ingredient [ingredient]="ingredient"></app-ingredient>
-  }
+<div class="ingredients p1">
+    <h2 class="text-center">Ingredients</h2>
+    <hr>
+
+    @if(errorMessage$ | async) {
+        <p class="text-center text-danger">{{ errorMessage$ | async }}</p>
+    } 
+
+    <div class="ingredients__content">
+        @if(contentLoaded()) {
+            @for(ingredient of ingredients(); track ingredient.id) {
+                <app-ingredient [ingredient]="ingredient" [isClickable]="true"></app-ingredient>
+            }
+        } @else {
+            <span class="ingredients__content__loader"></span>
+        }
+    </div>
 </div>

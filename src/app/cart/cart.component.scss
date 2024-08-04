@@ -1,0 +1,10 @@
+@import '../../util.scss';
+
+.cart {
+    &__content {
+        &__checkout {
+            display: flex;
+            justify-content: space-between;
+        }
+    }
+}

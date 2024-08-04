@@ -1,0 +1,16 @@
+<div class="cart p1">
+    <h2 class="text-center">Cart</h2>
+    <hr>
+    <div class="cart__content">
+        <span class="cart__content__checkout">
+            <p>Total items: {{ cart().totalItems }}</p>
+            <button [disabled]="!cart().ingredients.length" (click)="onCheckout()">Checkout</button>
+        </span>
+        <hr>
+        @for (ingredient of cart().ingredients; track ingredient.id) {
+            <app-ingredient [ingredient]="ingredient" [isClickable]="false" />
+        } @empty {
+            <p>Your cart is empty. Click on a recipe to add missing ingredients.</p>
+        }
+    </div>
+</div>

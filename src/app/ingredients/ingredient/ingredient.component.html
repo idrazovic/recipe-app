@@ -1,6 +1,7 @@
 <p
-  [ngClass]="{ ingredient: true, selected: ingredient().selected }"
-  (click)="onSelect()"
+  class="ingredient"
+  [ngClass]="{ 'ingredient--selected': ingredient().selected }"
+  (click)="isClickable() && onSelect()"
 >
-  {{ ingredient().name }},
+  {{ ingredient().name }}{{ isClickable() ? "" : "," }}
 </p>

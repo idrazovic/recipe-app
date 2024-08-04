@@ -6,4 +6,6 @@ export interface Recipe {
     description: string;
     ingredientIds: number[];
     ingredients: Ingredient[];
+    allIngredientsSelected?: boolean;
+    someIngredientsSelected?: boolean;
 };

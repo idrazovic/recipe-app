@@ -1,15 +1,49 @@
+import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { inject, Injectable } from '@angular/core';
-import { Recipe } from '../recipes/recipe/recipe.model';
+
+import { delay, map, throwError } from 'rxjs';
+
+import { Ingredient } from './ingredient/ingredient.model';
 
 @Injectable({
     providedIn: 'root'
 })
 export class IngredientsService {
-    http = inject(HttpClient);
     url = '../assets/data/ingredients.json';
 
+    constructor(private http: HttpClient) { }
+
+    private getSelectedIngredientsIds() {
+        return JSON.parse(localStorage.getItem('selectedIngredientsIds') || '[]');
+    }
+
     getAll() {
-        return this.http.get<{ ingredients: Recipe[] }>(this.url);
+        const selectedIngredientsIds = this.getSelectedIngredientsIds();
+
+        return this.http.get<{ ingredients: Ingredient[] }>(this.url)
+            .pipe(
+                map(({ ingredients }) => {
+                    return ingredients.map(ingredient => {
+
+                        return {
+                            ...ingredient,
+                            selected: selectedIngredientsIds.includes(ingredient.id)
+                        }
+                    })
+                }),
+                delay(300)
+            );
+    }
+
+    updateSelectedIngredientInLocaleStorage(ingredient: Ingredient) {
+        const ingredients = this.getSelectedIngredientsIds();
+
+        if (!ingredient.selected) {
+            ingredients.push(ingredient.id);
+        } else {
+            ingredients.splice(ingredients.indexOf(ingredient.id), 1);
+        }
+
+        localStorage.setItem('selectedIngredientsIds', JSON.stringify(ingredients));
     }
 }

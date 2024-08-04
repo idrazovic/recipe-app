@@ -1,7 +1,21 @@
-.recipe {
-    display: flex;
-}
+@import "../../../util.scss";
 
-.ingredients {
+.recipe {
   display: flex;
+
+  &__recipe-name {
+    cursor: pointer;
+
+    &--all-ingredients-selected {
+      color: $highlight-color-darker !important;
+    }
+
+    &--some-ingredients-selected {
+      color: $highlight-color;
+    }
+  }
+
+  &__ingredients {
+    display: flex;
+  }
 }

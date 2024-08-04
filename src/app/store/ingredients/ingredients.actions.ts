@@ -9,7 +9,21 @@ export const getIngredientsSuccess = createAction(
     props<{ payload: Ingredient[] }>()
 )
 
+export const getIngredientsError = createAction(
+    '[Ingredients] Get ingredients error',
+    props<{ payload: string }>()
+)
+
 export const selectIngredient = createAction(
     '[Ingredients] Select ingredient',
-    props<{ payload: number }>()
+    props<{ payload: Ingredient }>()
+)
+
+export const selectIngredientError = createAction(
+    '[Ingredients] Select ingredient error',
+    props<{ payload: string }>()
+)
+
+export const saveToLocalStorageSuccess = createAction(
+    '[Ingredients] Save to local storage success',
 )
