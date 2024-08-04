@@ -1,6 +1,11 @@
 <div class="cart p1">
     <h2 class="text-center">Cart</h2>
     <hr>
+
+    @if(cart().errorMessage) {
+        <p class="text-center text-danger">{{ cart().errorMessage }}</p>
+    }
+
     <div class="cart__content">
         <span class="cart__content__checkout">
             <p>Total items: {{ cart().totalItems }}</p>

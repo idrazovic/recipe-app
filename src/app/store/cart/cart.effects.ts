@@ -1,21 +1,25 @@
 import { inject } from '@angular/core';
 
 import { Actions, createEffect, ofType } from '@ngrx/effects';
-import { EMPTY, Observable, of } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { map, exhaustMap, catchError, tap } from 'rxjs/operators';
 
-import { checkout, checkoutSuccess } from './cart.actions';
+import { checkout, checkoutError, checkoutSuccess } from './cart.actions';
+import { CartService } from '../../cart/cart.service';
 
 export const checkout$ = createEffect(
     (
-        actions$ = inject(Actions)
+        actions$ = inject(Actions),
+        cartService = inject(CartService)
     ): Observable<{ type: string }> => {
         return actions$.pipe(
             ofType(checkout),
-            exhaustMap(() => of('same fake data')
+            exhaustMap(() => cartService.checkout()
                 .pipe(
                     map(() => (checkoutSuccess())),
-                    catchError(() => EMPTY)
+                    catchError((error: Error) => {
+                        return of(checkoutError({ payload: error.message }));
+                    })
                 ))
         );
     },

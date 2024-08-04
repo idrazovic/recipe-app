@@ -17,3 +17,5 @@ export const addIngredientsToCart = createAction(
 export const checkout = createAction('[Cart] Checkout', props<{ payload: Ingredient[] }>());
 
 export const checkoutSuccess = createAction('[Cart] Checkout success');
+
+export const checkoutError = createAction('[Cart] Checkout error', props<{ payload: string }>())

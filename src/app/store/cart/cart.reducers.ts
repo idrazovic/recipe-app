@@ -1,16 +1,17 @@
 import { createReducer, on } from "@ngrx/store";
 
 import { Ingredient } from "../../ingredients/ingredient/ingredient.model";
-import { addIngredientsToCart, checkout, checkoutSuccess } from "./cart.actions";
+import { addIngredientsToCart, checkout, checkoutError, checkoutSuccess } from "./cart.actions";
 
 export interface CartState {
-    ingredients: Ingredient[],
-    totalItems: number
+    ingredients: Ingredient[];
+    totalItems: number;
+    errorMessage?: string;
 }
 
 export const initialState: CartState = {
     ingredients: [],
-    totalItems: 0
+    totalItems: 0,
 };
 
 export const cartReducer = createReducer(
@@ -27,5 +28,6 @@ export const cartReducer = createReducer(
             totalItems: updatedIngredients.length
         }
     }),
-    on(checkoutSuccess, () => initialState)
+    on(checkoutSuccess, () => initialState),
+    on(checkoutError, (state, { payload }) => ({ ...state, errorMessage: payload }))
 );
