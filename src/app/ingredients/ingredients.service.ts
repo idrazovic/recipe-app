@@ -24,7 +24,6 @@ export class IngredientsService {
             .pipe(
                 map(({ ingredients }) => {
                     return ingredients.map(ingredient => {
-
                         return {
                             ...ingredient,
                             selected: selectedIngredientsIds.includes(ingredient.id)
