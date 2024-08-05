@@ -7,7 +7,7 @@ export interface CartState {
     ingredients: Ingredient[];
     totalItems: number;
     errorMessage?: string;
-}
+};
 
 export const initialState: CartState = {
     ingredients: [],
@@ -20,8 +20,8 @@ export const cartReducer = createReducer(
         const { ingredients } = state;
 
         const filteredStateIngredients = ingredients.filter((ingredient) => !payload.ingredientIds.includes(ingredient.id));
-        const filteredPayloadIngredients = payload.ingredients.filter((ingredient) => !ingredient.selected);
-        const updatedIngredients = [...filteredStateIngredients, ...filteredPayloadIngredients];
+        const unselectedPayloadIngredients = payload.ingredients.filter((ingredient) => !ingredient.selected);
+        const updatedIngredients = [...filteredStateIngredients, ...unselectedPayloadIngredients];
 
         return {
             ingredients: updatedIngredients,

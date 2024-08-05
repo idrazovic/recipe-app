@@ -6,7 +6,7 @@ import { getIngredientsError, getIngredientsSuccess, selectIngredient, selectIng
 export interface IngredientsState {
     data: Ingredient[],
     errorMessage: string
-}
+};
 
 export const initialState: IngredientsState = {
     data: [],

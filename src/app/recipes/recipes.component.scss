@@ -1,12 +1,11 @@
 @import "../../util.scss";
 
 .recipes {
-  &__content {
-    text-align: center;
-    
+    &__content {
+        text-align: center;
 
-    &__loader {
-      @include loader;
+        &__loader {
+            @include loader;
+        }
     }
-  }
 }

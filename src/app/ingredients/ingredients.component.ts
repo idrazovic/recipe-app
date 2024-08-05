@@ -2,13 +2,13 @@ import { Component, OnInit, signal } from '@angular/core';
 import { AsyncPipe } from '@angular/common';
 
 import { Store } from '@ngrx/store';
+import { Observable } from 'rxjs';
 
 import { Ingredient } from './ingredient/ingredient.model';
 import { selectIngredients, selectIngredientsError } from '../store/ingredients/ingredients.selectors';
 import { IngredientComponent } from './ingredient/ingredient.component';
 import { getIngredients } from '../store/ingredients/ingredients.actions';
 import { IngredientsState } from '../store/ingredients/ingredients.reducers';
-import { Observable } from 'rxjs';
 
 @Component({
     selector: 'app-ingredients',

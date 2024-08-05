@@ -24,18 +24,19 @@ export class RecipesComponent implements OnInit {
     contentLoaded = signal(false);
 
     constructor(private store: Store<{ recipes: Recipe[], ingredients: IngredientsState }>) {
-        const subcription = this.store.select(selectRecipes).pipe(
-            map(({ recipes, ingredients }) => {
-                return recipes.map<Recipe>(recipe => this.addIngredients(recipe, ingredients.data));
-            }),
-        ).subscribe((recipes) => {
-            const ingredientsAddedToRecipes = recipes.length && recipes[0].ingredients.length;
-            if (ingredientsAddedToRecipes) {
-                this.contentLoaded.set(true);
-            }
+        const subcription = this.store.select(selectRecipes)
+            .pipe(
+                map(({ recipes, ingredients }) => {
+                    return recipes.map<Recipe>(recipe => this.addIngredients(recipe, ingredients.data));
+                }),
+            ).subscribe((recipes) => {
+                const ingredientsAddedToRecipes = recipes.length && recipes[0].ingredients.length;
+                if (ingredientsAddedToRecipes) {
+                    this.contentLoaded.set(true);
+                }
 
-            this.recipes.set(recipes);
-        });
+                this.recipes.set(recipes);
+            });
 
         this.destroyRef.onDestroy(() => subcription.unsubscribe());
     }

@@ -1,11 +1,11 @@
 @import "../../../util.scss";
 
 .ingredient {
-  &--clickable {
-    cursor: pointer;
-  }
+    &--clickable {
+        cursor: pointer;
+    }
 
-  &--selected {
-    color: $highlight-color;;
-  }
+    &--selected {
+        color: $highlight-color;
+    }
 }

@@ -1,10 +1,10 @@
 <p
-  class="ingredient"
-  [ngClass]="{ 
-    'ingredient--selected': ingredient().selected,
-    'ingredient--clickable': isClickable()
-}"
-  (click)="isClickable() && onSelect()"
+    class="ingredient"
+    [ngClass]="{
+        'ingredient--selected': ingredient().selected,
+        'ingredient--clickable': isClickable()
+    }"
+    (click)="isClickable() && onSelect()"
 >
-  {{ ingredient().name }}{{ isClickable() ? "" : "," }}
+    {{ ingredient().name }}{{ isClickable() ? "" : "," }}
 </p>

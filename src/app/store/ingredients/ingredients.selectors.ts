@@ -1,5 +1,5 @@
-import { Ingredient } from "../../ingredients/ingredient/ingredient.model";
+import { IngredientsState } from "./ingredients.reducers";
 
-export const selectIngredients = (state: { ingredients: { data: Ingredient[] } }) => state.ingredients.data;
+export const selectIngredients = (state: { ingredients: IngredientsState }) => state.ingredients.data;
 
-export const selectIngredientsError = (state: { ingredients: { errorMessage: string } }) => state.ingredients.errorMessage
+export const selectIngredientsError = (state: { ingredients: { errorMessage: string } }) => state.ingredients.errorMessage;

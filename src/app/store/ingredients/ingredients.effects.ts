@@ -33,7 +33,6 @@ export const getIngredients$ = createEffect(
     { functional: true }
 );
 
-
 export const selectIngredient$ = createEffect(
     (
         actions$ = inject(Actions),
@@ -48,5 +47,5 @@ export const selectIngredient$ = createEffect(
             })
         );
     },
-    { functional: true, dispatch: false }
+    { functional: true }
 );

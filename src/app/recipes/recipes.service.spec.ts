@@ -1,8 +1,8 @@
 import { TestBed } from '@angular/core/testing';
-
-import { RecipesService } from './recipes.service';
 import { provideHttpClient } from '@angular/common/http';
 import { provideHttpClientTesting } from '@angular/common/http/testing';
+
+import { RecipesService } from './recipes.service';
 
 describe('RecipesService', () => {
     let service: RecipesService;
