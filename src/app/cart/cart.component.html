@@ -1,18 +1,24 @@
 <div class="cart p1">
     <h2 class="text-center">Cart</h2>
-    <hr>
+    <hr />
 
-    @if(cart()) {
+    @if(cart()) { 
         @if(cart().errorMessage) {
             <p class="text-center text-danger">{{ cart().errorMessage }}</p>
         }
-    
+
         <div class="cart__content">
             <span class="cart__content__checkout">
                 <p>Total items: {{ cart().totalItems }}</p>
-                <button [disabled]="!cart().ingredients.length" (click)="onCheckout()">Checkout</button>
+                <button
+                    class="cart__content__checkout__button"
+                    [disabled]="!cart().ingredients.length"
+                    (click)="onCheckout()"
+                >
+                    Checkout
+                </button>
             </span>
-            <hr>
+            <hr />
             @for (ingredient of cart().ingredients; track ingredient.id) {
                 <app-ingredient [ingredient]="ingredient" [isClickable]="false" />
             } @empty {

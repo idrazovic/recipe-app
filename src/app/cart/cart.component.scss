@@ -1,10 +1,27 @@
-@import '../../util.scss';
+@import "../../util.scss";
 
 .cart {
     &__content {
         &__checkout {
             display: flex;
             justify-content: space-between;
+
+            &__button {
+                background-color: $background-color-2;
+                color: white;
+                padding: 1rem;
+                border-radius: 5px;
+                cursor: pointer;
+
+                &:hover {
+                    background-color: $background-color;
+                }
+
+                &:disabled {
+                    background-color: $background-color-3;
+                    cursor: not-allowed;
+                }
+            }
         }
     }
 }
